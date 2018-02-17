@@ -19,6 +19,16 @@
 
         }
     }
+    elseif (isset($_POST['delete'])) {
+        if(login($_SESSION['username'], $_POST['password']))
+        {
+            deleteuser($_SESSION['username']);
+            $_SESSION['change'] = "Your account has been permanently deleted.";
+            
+            header("Location: success.php");
+            
+        }
+    }
     
     
 ?>

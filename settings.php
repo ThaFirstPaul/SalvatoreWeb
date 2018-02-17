@@ -2,6 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
 
+
+<script>
+function showStuff() {
+    document.getElementById("deletesure").style.display = 'block';
+}
+</script>
   
   <link rel="stylesheet" href="css/bootstrap.min.css"><title>Salvatore Guild - Personal Settings</title></head><body>
 <?php require("api/api.php");
@@ -22,7 +28,7 @@ require("header.php");
 
 <form id="form" method="post" action="save.php">
     <div class="container">
-        <h3>Email:<?php if($settings["email"] !== "") {echo "✓";} ?></h3>
+        <h3>Email:</h3><?php if($settings["email"] !== "") {echo "<p  style='color:green;'> (✓Already added)</p>";} ?>
         <input id="email" name="email" placeholder=<?php
             if ($settings["email"] !== "") {
                 echo $settings["email"];
@@ -35,7 +41,7 @@ require("header.php");
 
 <form id="form" method="post" action="save.php">
 <div class="container">
-<h3>API-Key:<?php if($settings["akikey"] !== "") {echo "✓";} ?></h3>
+<h3>API-Key:</h3><?php if($settings["akikey"] !== "") {echo "<p  style='color:green;'> (✓Already added)</p>";} ?>
 <input id="apikey" name="apikey" placeholder=<?php
     if ($settings["akikey"] !== "") {
         echo $settings["apikey"];
@@ -55,6 +61,19 @@ require("header.php");
 <button type="submit" name="changepassword" class="btn btn-primary">Save</button>
 </div>
 </form>
+
+<div class="container">
+
+<form id="form" method="post" action="save.php">
+<h3>Delete your account:</h3>
+<input id="password" name="password" placeholder="Password" type="password" class="form-control">
+<button style="display: none;" id= "deletesure" type="submit" name="deletesure" class="btn btn-danger">Are You Sure?</button>
+</form>
+
+<button onclick="showStuff()" type="submit" name="delete" class="btn btn-warning">Delete</button>
+</div>
+
+
 
 </div>
 
