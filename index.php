@@ -40,5 +40,6 @@ cellspacing="10">
 </th>
 </tr>
 </tbody></table>
+<?php require("messageboard.php"); ?>
 </div>
 </body></html>
