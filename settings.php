@@ -5,6 +5,7 @@
 
 <script>
 function showStuff() {
+    document.getElementById("delete").style.display = 'none';
     document.getElementById("deletesure").style.display = 'block';
 }
 </script>
@@ -41,12 +42,15 @@ require("header.php");
 
 <form id="form" method="post" action="save.php">
 <div class="container">
-<h3>API-Key:</h3><?php if($settings["akikey"] !== "") {echo "<p  style='color:green;'> (✓Already added)</p>";} ?>
-<input id="apikey" name="apikey" placeholder=<?php
-    if ($settings["akikey"] !== "") {
-        echo $settings["apikey"];
-    } else {
-        echo "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p" ;} ?> type="text" class="form-control">
+<h3>API-Key:</h3>
+<?php if($settings["apikey"] !== "") {
+    echo "<p style='color:green;' (✓Already added, Thank you!)</p>";
+} else {
+    echo "<p> The API-Key is used to get Players, Guilds and Friends from Hypixel's API. </p>";}
+?>
+
+<input id="apikey" name="apikey" placeholder=<?php if ($settings["apikey"] !== "") {echo $settings["apikey"]; } else {echo "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p";} ?> type="text"
+class="form-control">
 <button type="submit" name="saveapikey" class="btn btn-primary">Save</button>
 </div>
 </form>
@@ -70,7 +74,7 @@ require("header.php");
 <button style="display: none;" id= "deletesure" type="submit" name="deletesure" class="btn btn-danger">Are You Sure?</button>
 </form>
 
-<button onclick="showStuff()" type="submit" name="delete" class="btn btn-warning">Delete</button>
+<button id="delete" onclick="showStuff()" type="submit" name="delete" class="btn btn-warning">Delete</button>
 </div>
 
 

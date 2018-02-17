@@ -4,11 +4,17 @@
     if (isset($_POST['email'])) {
         if(setemail($_SESSION['username'], $_POST['email'])) {
             header("Location: success.php");
+        } else {
+            $_SESSION['error_type'] = "Unexpected Error!";
+            header("Location: error.php");
         }
     }
     elseif (isset($_POST['apikey'])) {
         if (setapikey($_SESSION['username'], $_POST['apikey'])){
             header("Location: success.php");
+        } else {
+            $_SESSION['error_type'] = "Unexpected Error!";
+            header("Location: error.php");
         }
     }
     elseif (isset($_POST['changepassword'])) {
@@ -17,9 +23,12 @@
             
             header("Location: success.php");
 
+        } else {
+            $_SESSION['error_type'] = "Incorrect Password!";
+            header("Location: error.php");
         }
     }
-    elseif (isset($_POST['delete'])) {
+    elseif (isset($_POST['deletesure'])) {
         if(login($_SESSION['username'], $_POST['password']))
         {
             deleteuser($_SESSION['username']);
@@ -27,7 +36,13 @@
             
             header("Location: success.php");
             
+        } else {
+            $_SESSION['error_type'] = "Incorrect Password!";
+            header("Location: error.php");
         }
+    } else {
+        $_SESSION['error_type'] = "Unexpected Error!";
+        header("Location: error.php");
     }
     
     

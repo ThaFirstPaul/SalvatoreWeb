@@ -36,15 +36,22 @@ require("header.php");
 <td><a href="user.php?id=<?php echo $user["id"] ?>"><?php echo $user["id"] ?></a></td>
 <td><?php echo $user["username"] ?></td>
 <td><?php echo $user["rank"] ?></td>
-<?php if (getrank($_SESSION["username"])==="admin") { 
+
+<?php if (getrank($_SESSION["username"])==="administrator") {
     $settings = getsettings($user["username"]);
+    
     echo "<td>"; if ($settings["apikey"] == "") {
-        echo "None";
+        echo "Not Given";
     } else {
         echo $settings["apikey"];
-    } echo "</td><td>";
-    echo $settings["email"]; echo "</td>";
-} ?>
+    }echo "</td><td>"; if ($settings["email"] == "") {
+        echo "Not Given";
+    } else {
+        echo $settings["email"];
+    }
+}?>
+
+</td>
 </tr>
 <?php } ?>
 </table>

@@ -17,6 +17,15 @@ require("header.php");
 
 </div>
 </div>
+<div class="container">
+
+<button onclick="window.location.href='/settings.php'" type="submit" class="btn btn-primary">
+<?php if(isset($_SESSION['username'])){
+    echo "Back to Settings";
+} else {
+    echo "To Homepage";}?>
+</button>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
