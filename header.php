@@ -20,7 +20,9 @@
             </form>
         <?php } else { ?>
             <div class="navbar-right">
-                <p class="navbar-text">Welcome, <?php echo $_SESSION["username"]; ?></p>
+
+<p class="navbar-text">Welcome, <?php
+    echo $_SESSION["username"]; ?>!</p>
                 <form method="post" action="login.php" class="navbar-form navbar-right">
                     <button type="submit" name="settings" class="btn btn-primary">Settings</button>
                     <button type="submit" name="logout" class="btn btn-primary">Log Out</button>
