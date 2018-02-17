@@ -23,10 +23,10 @@ require("header.php");
 
 <form id="form" method="post" action="save.php">
     <div class="container">
-        <h3>Email:</h3>
+        <h3>Email:<?php if($settings["email"] !== "") {echo "✓";} ?></h3>
         <input id="email" name="email" placeholder=<?php
-            if ($settings["email"] === "") {
-                echo $settings["email="];
+            if ($settings["email"] !== "") {
+                echo $settings["email"];
             } else {
                 echo "example@example.com" ;} ?> type="text" class="form-control">
     <button onclick=save("email") type="submit" name="saveemail" class="btn btn-primary">Save</button>
@@ -36,10 +36,10 @@ require("header.php");
 
 <form id="form" method="post" action="save.php">
 <div class="container">
-<h3>API-Key:</h3>
+<h3>API-Key:<?php if($settings["akikey"] !== "") {echo "✓";} ?></h3>
 <input id="apikey" name="apikey" placeholder=<?php
-    if ($settings["akikey"] === "") {
-        echo $settings["apikey="];
+    if ($settings["akikey"] !== "") {
+        echo $settings["apikey"];
     } else {
         echo "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p" ;} ?> type="text" class="form-control">
 <button type="submit" name="saveapikey" class="btn btn-primary">Save</button>

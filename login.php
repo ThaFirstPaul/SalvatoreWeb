@@ -10,7 +10,7 @@
         header("Location: settings.php");
     }
     elseif (isset($_POST['login'])) {
-        if (login($_POST["username"], $_POST["password"])) {
+        if ($_POST['login'] !== "" and login($_POST["username"], $_POST["password"])) {
             $_SESSION["username"] = $_POST["username"];
             $_SESSION["rank"] = $_POST["rank"];
             header("Location: index.php");
@@ -20,7 +20,7 @@
         }
     }
     elseif (isset($_POST['signup'])) {
-        if (register($_POST["username"], $_POST["password"])) {
+        if ($_POST['login'] !== "" and register($_POST["username"], $_POST["password"])) {
             $_SESSION["username"] = $_POST["username"];
             $_SESSION["rank"] = "member";
             header("Location: new.php");
