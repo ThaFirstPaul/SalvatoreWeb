@@ -13,7 +13,10 @@
     }
     elseif (isset($_POST['changepassword'])) {
         if(changepass($_SESSION['username'], $_POST['oldpassword'], $_POST['newpassword'])) {
+            $_SESSION['change'] = "Please sign back in for changes to take place!";
+            
             header("Location: success.php");
+
         }
     }
     
