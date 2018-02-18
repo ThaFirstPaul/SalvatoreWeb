@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); if (!isset($_SESSION["username"])) { header("Location: index.php");} ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
   <link rel="stylesheet" href="css/bootstrap.min.css"><title>Salvatore Guild - Success</title></head><body>
@@ -15,11 +15,12 @@
 
 <div class="container">
 
-<button onclick="window.location.href='/settings.php'" type="submit" class="btn btn-primary">
-<?php if(isset($_SESSION['username'])){
-    echo "Back to Settings";
+<?php $a = "window.location.href='/{$_SESSION['goto']}.php'"; ?>
+<button onclick=<?php echo $a; ?> type="submit" class="btn btn-primary">
+<?php if($_SESSION['goto'] === "index"){
+    echo "To Homepage";
 } else {
-    echo "To Homepage";}?>
+    echo "Back to "; echo $_SESSION['goto']; }?>
 </button>
 </div>
 </body></html>

@@ -25,8 +25,10 @@ require("header.php");
 
 <?php $settings = getsettings($_SESSION["username"]) ?>
 
+
 <div class="modal-body">
 
+<!-- Email submission -->
 <form id="form" method="post" action="save.php">
     <div class="container">
         <h3>Email:</h3><?php if($settings["email"] !== "") {echo "<p  style='color:green;'> (✓Already added)</p>";} ?>
@@ -39,7 +41,7 @@ require("header.php");
 </div>
 </form>
 
-
+<!-- API-Key submission -->
 <form id="form" method="post" action="save.php">
 <div class="container">
 <h3>API-Key:</h3>
@@ -55,7 +57,7 @@ class="form-control">
 </div>
 </form>
 
-
+<!-- Change Password -->
 <form id="form" method="post" action="save.php">
 <div class="container">
 <h3>Change your Password:</h3>
@@ -66,8 +68,8 @@ class="form-control">
 </div>
 </form>
 
+<!-- Delete Account -->
 <div class="container">
-
 <form id="form" method="post" action="save.php">
 <h3>Delete your account:</h3>
 <input id="password" name="password" placeholder="Password" type="password" class="form-control">
@@ -77,6 +79,16 @@ class="form-control">
 <button id="delete" onclick="showStuff()" type="submit" name="delete" class="btn btn-warning">Delete</button>
 </div>
 
+<!-- Admin "git pull" command -->
+<?php if (getrank($_SESSION["username"]) === "administrator") { ?>
+<form id="form" method="post" action="save.php">
+<div class="container">
+<h3>Git Pull:</h3>
+<input id="password" name="password" placeholder="Password" type="password" class="form-control">
+<button type="submit" name="gitpull" class="btn btn-primary">Git Pull</button>
+</div>
+</form>
+<?php } ?>
 
 
 </div>
