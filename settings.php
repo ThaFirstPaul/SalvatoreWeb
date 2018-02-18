@@ -87,7 +87,6 @@ class="form-control">
 <form id="form" method="post" action="save.php">
 <div class="container">
 <h3>Git Pull:</h3>
-<input id="password" name="password" placeholder="Password" type="password" class="form-control">
 <button type="submit" name="gitpull" class="btn btn-primary">Git Pull</button>
 </div>
 </form>
