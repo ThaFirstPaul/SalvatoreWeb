@@ -31,7 +31,10 @@ require("header.php");
 <!-- Email submission -->
 <form id="form" method="post" action="save.php">
     <div class="container">
-        <h3>Email:</h3><?php if($settings["email"] !== "") {echo "<p  style='color:green;'> (✓Already added)</p>";} ?>
+        <h3>Email:</h3>
+        <?php if($settings["email"] !== "") {
+    echo "<p  style='color:green;'> (✓Already added)</p>";
+} ?>
         <input id="email" name="email" placeholder=<?php
             if ($settings["email"] !== "") {
                 echo $settings["email"];
@@ -46,7 +49,7 @@ require("header.php");
 <div class="container">
 <h3>API-Key:</h3>
 <?php if($settings["apikey"] !== "") {
-    echo "<p style='color:green;' (✓Already added, Thank you!)</p>";
+    echo "<p style='color:green;'> (✓Already added, Thank you!)</p>";
 } else {
     echo "<p> The API-Key is used to get Players, Guilds and Friends from Hypixel's API. </p>";}
 ?>
