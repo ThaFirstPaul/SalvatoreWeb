@@ -29,7 +29,6 @@
         }
     }
     elseif (isset($_POST['gitpull'])) {
-        if(login($_SESSION['username'], $_POST['password'])) {
             if (require("gitpull.php")){
             $_SESSION['change'] = "Please wait a few seconds for changes to take place!";
             $_SESSION['goto'] = "index";
@@ -39,10 +38,6 @@
                 
                 header("Location: error.php");
             }
-        } else {
-            $_SESSION['error_type'] = "Incorrect Password!";
-            header("Location: error.php");
-        }
     }
 
     elseif (isset($_POST['deletesure'])) {
