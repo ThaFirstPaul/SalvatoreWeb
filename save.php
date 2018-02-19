@@ -43,10 +43,13 @@
     elseif (isset($_POST['deletesure'])) {
         if(login($_SESSION['username'], $_POST['password']))
         {
-            deleteuser($_SESSION['username']);
+            if (deleteuser($_SESSION['username'])) {
             $_SESSION['change'] = "Your account has been permanently deleted.";
-            $_SESSION['goto'] = "settings";
-            header("Location: success.php");
+            $_SESSION['goto'] = "logout";
+            header("Location: success.php");} else {
+                $_SESSION['error_type'] = "Failed to delete user!";
+                header("Location: error.php");
+            }
             
         } else {
             $_SESSION['error_type'] = "Incorrect Password!";
