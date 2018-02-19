@@ -34,6 +34,7 @@ require("header.php");
         <h3>Email:</h3>
         <?php if($settings["email"] !== "") {
     echo "<p  style='color:green;'> (✓Already added)</p>";
+} else { echo "<p> Your Email will be used to send you Notifications (when it is implemented). </p>";
 } ?>
         <input id="email" name="email" placeholder=<?php
             if ($settings["email"] !== "") {
