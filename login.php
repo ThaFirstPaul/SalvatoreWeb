@@ -24,11 +24,16 @@
         }
     }
     elseif (isset($_POST['signup'])) {
-        if ($_POST['username'] !== "" and $_POST['password'] !== "" and register($_POST["username"], $_POST["password"])) {
+        if ($_POST['username'] !== "" and $_POST['password'] !== "") {
+            if (register($_POST["username"], $_POST["password"])){
             $_SESSION["username"] = $_POST["username"];
             $_SESSION['goto'] = "index";
             $_SESSION['change'] = "You hve successfully signed up!";
             header("Location: success.php");
+            } else {
+                $_SESSION['error_type'] = "Sign up failed!";
+                header("Location: error.php");
+            }
         } else {
             header("Location: index.php");
 
