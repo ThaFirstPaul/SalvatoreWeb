@@ -29,7 +29,7 @@
 <tr>
 <td><?php echo $message["username"] ?></td>
 <td><?php echo $message["message"] ?></td>
-<?php if (getrank($_SESSION["username"]) === "administrator") { ?>
+<?php if (getrank($_SESSION["username"]) === "administrator")) { ?>
     <td>
     <form id="form" method="post" action="message.php">
     <input id="password" name="password" placeholder="Password" type="password" class="form-control">
