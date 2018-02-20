@@ -5,7 +5,7 @@
 <h2>Messages:</h2>
 <form autocomplete="off" id="form" method="post" action="message.php">
 <input id="message" name="message" placeholder="Message" class="form-control">
-<button id= "sendmessage" name="deletesure" type="submit" class="btn btn-primary">Send</button>
+<button id= "sendmessage" name="sendmessage" type="submit" class="btn btn-primary">Send</button>
 </form>
 </div>
 
