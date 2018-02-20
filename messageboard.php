@@ -36,9 +36,7 @@
     </form>
     </td>
 <?php } ?>
-
 </tr>
-<?php } ?>
 </table>
 </div>
 </div>
