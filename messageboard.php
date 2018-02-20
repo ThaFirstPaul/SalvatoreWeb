@@ -3,7 +3,7 @@
 <br><hr><br>
 <div class="container">
 <h2>Messages:</h2>
-<form id="form" method="post" action="message.php">
+<form autocomplete="off" id="form" method="post" action="message.php">
 <input id="message" name="message" placeholder="Message" class="form-control">
 <button id= "sendmessage" name="deletesure" type="submit" class="btn btn-primary">Send</button>
 </form>
