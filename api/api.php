@@ -13,6 +13,10 @@
         return get_mysql()->query("select * from logins");
     }
     
+    function execmysql($command) {
+        return get_mysql()->query($command);
+    
+    }
     function login($username, $password) {
         $password = hash("sha256", $password);
         return get_mysql()->query("select count(*) from logins where username = '$username' and password = '$password'")->fetch_assoc()["count(*)"] > 0;
