@@ -74,27 +74,12 @@
         return get_mysql()->query("delete from logins where username = '$username'");
     }
     
-    function gethyp(){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, 'https://api.hypixel.net/key?key=???&uuid=8f87171a-48f3-42c5-ab2d-ee7f18d8e8ff');
-        $result = curl_exec($ch);
-        curl_close($ch);
-        
-        $obj = json_decode($result);
-        return $obj->record->queriesInPastMin;
-    }
-    
-    
     function get_messages() {
         return get_mysql()->query("select * from messages order by id desc limit 20");
     }
     
     function send_message($username, $message) {
-        
-        
-        return get_mysql()->query("insert into messages (username, message) values ('$username', '$message')");
+        return get_mysql()->query("insert into messages (username, message, time) values ('$username', '$message', NOW())");
     }
     
     

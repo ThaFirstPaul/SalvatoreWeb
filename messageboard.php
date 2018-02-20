@@ -10,36 +10,46 @@
 </div>
 
 <?php } else {
-    echo "<h4>Sign in to send messages!</h4>";
+    echo "<br><h4>Sign in to send messages!</h4>";
 } ?>
 
 <br>
 
 <div class="container">
+
+
+
+<!-- If logged in as admin: -->
+
+<?php if (getrank($_SESSION["username"]) === "administrator") { ?>
 <table class="table table-bordered">
 <tr>
+<th>Time</th>
 <th>Username</th>
 <th>Message</th>
-<?php if (getrank($_SESSION["username"]) === "administrator") { echo "<th>Delete</th>";} ?>
+<th>Delete</th>
 </tr>
 
 <?php
     $messages = get_messages();
     while ($message = $messages->fetch_assoc()) { ?>
 <tr>
+<td><?php echo $message["time"] ?></td>
 <td><?php echo $message["username"] ?></td>
 <td><?php echo $message["message"] ?></td>
-<?php if (getrank($_SESSION["username"]) === "administrator") { ?>
 <td>
-<form id="form" method="post" action="message.php">
-<button type="submit" name="deletemessage" class="btn btn-danger">Delete</button>
-</form>
+    <form id="form" method="post" action="message.php">
+        <button type="submit" name="deletemessage" class="btn btn-danger">Work in Progress</button>
+    </form>
 </td>
-<?php } ?>
 
 </tr>
+<?php }; echo "</table>"; } else {
 
-<?php } ?>
+/* If not an admin: */
 
-</table>
+$messages = get_messages();
+while ($message = $messages->fetch_assoc()) {
+    echo "<span style='color:green;'>[" . $message["time"] . "]</spang><span style='color:black;'> " . $message["username"] . ": " . $message["message"] . "</span><br><br>"; }} ?>
+
 </div>
