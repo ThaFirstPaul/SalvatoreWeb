@@ -26,6 +26,7 @@
     $messages = get_messages();
     while ($message = $messages->fetch_assoc()) {
         ?>
+<tr>
 <td><?php echo $message["username"] ?></td>
 <td><?php echo $message["message"] ?></td>
 <?php if (getrank($_SESSION["username"]) === "administrator") { ?>
@@ -35,8 +36,10 @@
     <button type="submit" name="deletemessage" class="btn btn-danger">Delete</button>
     </form>
     </td>
-<?php } ?>
+    <?php } ?>
+
 </tr>
+<?php } ?>
 </table>
 </div>
 </div>
