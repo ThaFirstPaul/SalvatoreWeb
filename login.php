@@ -10,7 +10,7 @@
         header("Location: settings.php");
     }
     elseif (isset($_POST['login'])) {
-        if ($_POST['login'] === ""){
+        if ($_POST['username'] === "" or $_POST['password'] === ""){
             $_SESSION["error_type"] = "Login blank!";
             $_SESSION["goto"] = "index";
             header("Location: error.php");}
