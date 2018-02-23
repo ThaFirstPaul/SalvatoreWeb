@@ -1,6 +1,6 @@
 <?php session_start();
     function get_mysql() {
-        $mysql = new mysqli("127.0.0.1", "root", "password", "website");
+        $mysql = new mysqli("localhost", "root", "", "website");
         
         if ($mysql->connect_error) {
             die($mysql->connect_error);
