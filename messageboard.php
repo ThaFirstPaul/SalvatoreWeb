@@ -17,13 +17,14 @@
 
 <div class="container">
 
+<?php
 
+/* If logged in as admin: */
 
-<!-- If logged in as admin: -->
-
-<?php if (getrank($_SESSION["username"]) === "administrator") { ?>
+if (getrank($_SESSION["username"]) === "administrator") { ?>
 <table class="table table-bordered">
 <tr>
+<th>id</th>
 <th>Time</th>
 <th>Username</th>
 <th>Message</th>
@@ -34,12 +35,13 @@
     $messages = get_messages();
     while ($message = $messages->fetch_assoc()) { ?>
 <tr>
+<td><?php echo $message["Id"] ?></td>
 <td><?php echo $message["time"] ?></td>
 <td><?php echo $message["username"] ?></td>
 <td><?php echo $message["message"] ?></td>
 <td>
     <form id="form" method="post" action="message.php">
-        <button type="submit" name="deletemessage" class="btn btn-danger">Work in Progress</button>
+        <button type="submit" id=<?php echo $message["Id"] ?> name="deletemessage" class="btn btn-danger">Delete</button>
     </form>
 </td>
 
