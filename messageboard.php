@@ -22,7 +22,33 @@
 /* If logged in as admin: */
 
 if (getrank($_SESSION["username"]) === "administrator") { ?>
-<table class="table table-bordered">
+
+<script type="text/javascript">
+
+function deleteMessage(element) {
+    var mysql = require('mysql');
+    
+    var con = mysql.createConnection({
+                                     host: "127.0.0.1",
+                                     user: "root",
+                                     password: "password",
+                                     database: "website"
+                                     });
+    
+    con.connect(function(err) {
+                if (err) throw err;
+                console.log("Connected!");
+                var sql = "delete from messages where Id = '"+element.id+"'";
+                con.query(sql, function (err, result) {
+                          if (err) throw err;
+                          document.getElementById("maintable").deleteRow(element.parentNode.parentNode.rowIndex);
+                          console.log("Line Deleted");
+                          });
+                });
+    
+}</script>
+
+<table id="maintable" class="table table-bordered">
 <tr>
 <th>id</th>
 <th>Time</th>
@@ -40,9 +66,9 @@ if (getrank($_SESSION["username"]) === "administrator") { ?>
 <td><?php echo $message["username"] ?></td>
 <td><?php echo $message["message"] ?></td>
 <td>
-    <form id="form" method="post" action="message.php">
-        <button type="submit" id=<?php echo $message["Id"] ?> name="deletemessage" class="btn btn-danger">Delete</button>
-    </form>
+<!-- <form name=<?php echo $message["Id"] ?> id=<?php echo $message["Id"] ?> method="post" action="message.php"> -->
+<button type="submit" id=<?php echo $message["Id"] ?> onClick="deleteMessage(this)" class="btn btn-danger">Delete</button>
+<!--</form>-->
 </td>
 
 </tr>

@@ -82,8 +82,8 @@
         return get_mysql()->query("insert into messages (username, message, time) values ('$username', '$message', NOW())");
     }
     
-    function delete_message($username, $message_id) {
-        return get_mysql()->query("delete from messages where username = '$username' and Id = '$message_id'");
+    function delete_message($message_id) {
+        return get_mysql()->query("delete from messages where Id = '$message_id'"); // username = '$username' and
     }
     
     
