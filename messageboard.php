@@ -26,26 +26,7 @@ if (getrank($_SESSION["username"]) === "administrator") { ?>
 <script type="text/javascript">
 
 function deleteMessage(element) {
-    var mysql = require('mysql');
-    
-    var con = mysql.createConnection({
-                                     host: "127.0.0.1",
-                                     user: "root",
-                                     password: "password",
-                                     database: "website"
-                                     });
-    
-    con.connect(function(err) {
-                if (err) throw err;
-                console.log("Connected!");
-                var sql = "delete from messages where Id = '"+element.id+"'";
-                con.query(sql, function (err, result) {
-                          if (err) throw err;
-                          document.getElementById("maintable").deleteRow(element.parentNode.parentNode.rowIndex);
-                          console.log("Line Deleted");
-                          });
-                });
-    
+   document.getElementById("maintable").deleteRow(element.parentNode.parentNode.rowIndex); 
 }</script>
 
 <table id="maintable" class="table table-bordered">
