@@ -12,7 +12,7 @@ require("header.php");
 ?>
 <div class="jumbotron">
 <div class="container">
-<h1>Error: <?php echo $_SESSION["error_type"]; ?><br>
+<h1>Error: <?php echo $_POST["error"]; ?><br>
 </h1>
 
 </div>
@@ -20,8 +20,8 @@ require("header.php");
 <div class="container">
 
 <button onclick="window.location.href='/settings.php'" type="submit" class="btn btn-primary">
-<?php if(isset($_SESSION['username'])){
-    echo "Back to Settings";
+<?php if(isset($_SESSION['goto'])){
+    echo "Back to " . $_SESSION['goto'];
 } else {
     echo "To Homepage";}?>
 </button>
